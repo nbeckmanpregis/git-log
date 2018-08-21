@@ -13,7 +13,7 @@ def select_commit(repo):
     commits = [str(x) + ": " + commit_list[x] + '\n' for x in range(len(commit_list))]
     print(*commits, sep = '\n')
     n = int(input("Which commit would you like to ammend? (select the index from the list provided)"))
-    print("Commit data:\n")
+    print("Commit #", n, " data:\n")
     print("authored time: ", fifty_first_commits[n].authored_datetime)
     print("commited time: ",fifty_first_commits[n].committed_datetime)
     print("commit message: ", fifty_first_commits[n].message)
