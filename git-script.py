@@ -8,7 +8,7 @@ repo = Repo(os.getcwd())
 
 
 def select_commit(repo):
-    fifty_first_commits = list(repo.iter_commits("main", max_count=50))
+    fifty_first_commits = list(repo.iter_commits("main", max_count=80))
     commit_list = [commit.message + str(commit) for commit in fifty_first_commits]
     commits = [str(x) + ": " + commit_list[x] + '\n' for x in range(len(commit_list))]
     print(*commits, sep = '\n')
