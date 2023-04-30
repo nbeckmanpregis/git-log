@@ -39,3 +39,4 @@ if(input("Press y to push changes")[0] == 'y'):
     os.system("git push")
 else:
     os.system("git rebase --abort")
+
