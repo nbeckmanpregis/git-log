@@ -9,7 +9,6 @@ repo = Repo(os.getcwd())
 repo.git.checkout('main')
 
 
-print('hi')
 
 def select_commit():
     fifty_first_commits = list(repo.iter_commits("master", max_count=50))
