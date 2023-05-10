@@ -6,14 +6,12 @@ import sys
 
 repo = Repo(os.getcwd())
 
-repo.git.checkout('main')
 
-
-
-def select_commit():
-    fifty_first_commits = list(repo.iter_commits("master", max_count=50))
-
-    print("Commits: \n ", fifty_first_commits)
+def select_commit(repo):
+    fifty_first_commits = list(repo.iter_commits("main", max_count=50))
+    commit_list = [commit.message + str(commit) for commit in fifty_first_commits]
+    commits = [str(x) + ": " + commit_list[x] + '\n' for x in range(len(commit_list))]
+    print(*commits, sep = '\n')
     n = int(input("Which commit would you like to ammend? (select the index from the list provided)"))
     print("Commit data:\n")
     print("authored time: ", fifty_first_commits[n].authored_datetime)
@@ -27,11 +25,11 @@ def select_commit():
     if com == "quit":
         sys.exit()
     if com == "dif":
-        return select_commit()
+        return select_commit(repo)
     return commit
 
 
-commit = select_commit()
+commit = select_commit(repo)
 os.system("git rebase " + commit + "^ -i")
 
 os.system("git commit --amend")
